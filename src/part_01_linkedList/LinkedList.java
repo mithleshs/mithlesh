@@ -32,18 +32,49 @@ public class LinkedList {
 
 	public static void main(String[] args) {
 
-		LinkedList linkedList = new LinkedList();
+	}
 
-		linkedList.add(3);
-		linkedList.add(2);
-		linkedList.add(1);
-		linkedList.add(0);
-		linkedList.add(1);
-		linkedList.add(2);
-		linkedList.add(3);
+	public static void action_removeDuplicateFromSortedList() {
+		LinkedList linkedList1 = new LinkedList();
 
-		printLinkedList(linkedList);
-		
+		linkedList1.add(30);
+		linkedList1.add(30);
+		linkedList1.add(15);
+		linkedList1.add(15);
+		linkedList1.add(6);
+		linkedList1.add(3);
+		linkedList1.add(2);
+		linkedList1.add(2);
+
+		printLinkedList(linkedList1);
+		linkedList1.removeDuplicateFromSortedList();
+		printLinkedList(linkedList1);
+	}
+
+	// can also be solved using hashing # HashTable
+	public static void action_interserctionNode() {
+		LinkedList linkedList1 = new LinkedList();
+
+		linkedList1.add(30);
+		linkedList1.add(15);
+		linkedList1.add(9);
+		linkedList1.add(6);
+		linkedList1.add(3);
+		linkedList1.add(2);
+		linkedList1.add(3);
+
+		printLinkedList(linkedList1);
+
+		LinkedList linkedList2 = new LinkedList();
+
+		linkedList2.add(30);
+		linkedList2.add(15);
+		linkedList2.add(10);
+
+		printLinkedList(linkedList2);
+
+		System.out.println(" Intersection Point Node : "
+				+ linkedList1.getCommonNode(linkedList1, linkedList2).data);
 	}
 
 	public static void action_merege() {
@@ -280,4 +311,67 @@ public class LinkedList {
 		return true;
 	}
 
+	public int getSize() {
+		Node tempHead = head;
+		int count = 0;
+		while (tempHead != null) {
+			count++;
+			tempHead = tempHead.next;
+		}
+		return count;
+	}
+
+	public Node getCommonNode(LinkedList list1, LinkedList list2) {
+		Node commonNode = null;
+		int listSize1 = list1.getSize();
+		int listSize2 = list2.getSize();
+		if (listSize1 > listSize2) {
+			commonNode = getIntersectionNode(list1.head, list2.head, listSize1
+					- listSize2);
+		} else {
+			commonNode = getIntersectionNode(list2.head, list1.head, listSize2
+					- listSize1);
+		}
+		return commonNode;
+	}
+
+	public Node getIntersectionNode(Node head1, Node head2, int commonPos) {
+		Node commonNode = null;
+		for (int i = 0; i < commonPos; i++) {
+			if (head1 == null) {
+				return null;
+			}
+			head1 = head1.next;
+		}
+
+		while (head1 != null && head2 != null) {
+			if (head1.data == head2.data) {
+				return head1;
+			} else {
+				head1 = head1.next;
+				head2 = head2.next;
+			}
+		}
+		return commonNode;
+	}
+
+	public void removeDuplicateFromSortedList() {
+
+		Node currentNode = head;
+		Node nextTemp = null;
+		if (head == null)
+			return;
+		while (currentNode.next != null) {
+
+			if (currentNode.data == currentNode.next.data) {
+				nextTemp = currentNode.next.next;
+				currentNode.next = null;
+				currentNode.next = nextTemp;
+				size--;
+			} else {
+				currentNode = currentNode.next;
+			}
+		}
+
+	}
 }
