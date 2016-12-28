@@ -32,6 +32,21 @@ public class LinkedList {
 
 	public static void main(String[] args) {
 
+		
+	}
+
+	public static void action_pairWiseSwap() {
+		LinkedList linkedList1 = new LinkedList();
+		linkedList1.add(7);
+		linkedList1.add(5);
+		linkedList1.add(4);
+		linkedList1.add(3);
+		linkedList1.add(2);
+		linkedList1.add(1);
+
+		printLinkedList(linkedList1);
+		linkedList1.pairWiseSwap();
+		printLinkedList(linkedList1);
 	}
 
 	public static void action_removeDuplicateFromSortedList() {
@@ -255,6 +270,14 @@ public class LinkedList {
 		System.out.println("");
 	}
 
+	public void reversePrint(Node head) {
+		if (head == null)
+			return;
+
+		reversePrint(head.next);
+		System.out.print(head.data + " ");
+	}
+
 	public void reverse(Node currentNode, Node prevNode) {
 		/* If last node mark it head */
 		if (currentNode.next == null) {
@@ -356,7 +379,6 @@ public class LinkedList {
 	}
 
 	public void removeDuplicateFromSortedList() {
-
 		Node currentNode = head;
 		Node nextTemp = null;
 		if (head == null)
@@ -373,5 +395,41 @@ public class LinkedList {
 			}
 		}
 
+	}
+
+	public void pairWiseSwap() {
+		Node temp = head;
+		/* Traverse only till there are atleast 2 nodes left */
+		while (temp != null && temp.next != null) {
+			/* Swap the data */
+			int k = temp.data;
+			temp.data = temp.next.data;
+			temp.next.data = k;
+			temp = temp.next.next;
+		}
+	}
+
+	public Node getNodeAt(int pos) {
+		if (pos >= size)
+			return null;
+		Node tempNode = head;
+		Node currentNode = head;
+		int count = 0;
+		while (tempNode != null && count <= pos) {
+			currentNode = tempNode;
+			tempNode = tempNode.next;
+			count++;
+		}
+		return currentNode;
+	}
+
+	public void moveLastToFirst() {
+		if (size <= 1)
+			return;
+		Node tailNode = last();
+		Node secondlastNode = getNodeAt(size-2);
+		tailNode.next=head;
+		secondlastNode.next=null;
+		head=tailNode;
 	}
 }
