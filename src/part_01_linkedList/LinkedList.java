@@ -43,8 +43,7 @@ public class LinkedList {
 		linkedList.add(3);
 
 		printLinkedList(linkedList);
-		linkedList.isPalindrome();
-		printLinkedList(linkedList);
+		
 	}
 
 	public static void action_merege() {
