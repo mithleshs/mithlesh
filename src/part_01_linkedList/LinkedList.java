@@ -1,6 +1,5 @@
 package part_01_linkedList;
 
-
 /**
  * @author Mithlesh Singh
  * @Methods
@@ -33,6 +32,16 @@ public class LinkedList {
 
 	public static void main(String[] args) {
 
+		LinkedList linkedList1 = new LinkedList();
+		Node node7 = linkedList1.add(7);
+		linkedList1.add(5);
+		linkedList1.add(4);
+		linkedList1.add(3);
+		Node node2 = linkedList1.add(2);
+		linkedList1.add(1);
+		node7.next = node2;
+
+		System.out.println(linkedList1.containLoop());
 	}
 
 	public static void action_pairWiseSwap() {
@@ -432,9 +441,38 @@ public class LinkedList {
 		secondlastNode.next = null;
 		head = tailNode;
 	}
-	
-	public void meregeSort()
-	{
-		//TODO : Need to implement later
+
+	/**
+	 * How to detect a loop in a linked list?
+	 * 
+	 * {@link :
+	 * http://stackoverflow.com/questions/2663115/how-to-detect-a-loop-in
+	 * -a-linked-list}
+	 */
+	public boolean containLoop() {
+		if (head == null)
+			return false;
+		Node slow = head;
+		Node fast = head.next;
+
+		while (true) {
+
+			if (slow == null || fast == null) {
+				return false;
+			}
+			if (slow.data == fast.data) {
+				return true;
+			}
+			if (fast.next != null) {
+				slow = slow.next;
+				fast = fast.next.next;
+			} else {
+				return false;
+			}
+		}
+	}
+
+	public void meregeSort() {
+		// TODO : Need to implement later
 	}
 }
