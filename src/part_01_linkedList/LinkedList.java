@@ -1,5 +1,6 @@
 package part_01_linkedList;
 
+
 /**
  * @author Mithlesh Singh
  * @Methods
@@ -32,7 +33,6 @@ public class LinkedList {
 
 	public static void main(String[] args) {
 
-		
 	}
 
 	public static void action_pairWiseSwap() {
@@ -427,9 +427,14 @@ public class LinkedList {
 		if (size <= 1)
 			return;
 		Node tailNode = last();
-		Node secondlastNode = getNodeAt(size-2);
-		tailNode.next=head;
-		secondlastNode.next=null;
-		head=tailNode;
+		Node secondlastNode = getNodeAt(size - 2);
+		tailNode.next = head;
+		secondlastNode.next = null;
+		head = tailNode;
+	}
+	
+	public void meregeSort()
+	{
+		//TODO : Need to implement later
 	}
 }
