@@ -1,5 +1,7 @@
 package part_01_linkedList;
 
+import javax.sound.sampled.ReverbType;
+
 /**
  * @author Mithlesh Singh
  * @Methods
@@ -32,6 +34,24 @@ public class LinkedList {
 
 	public static void main(String[] args) {
 
+	}
+
+	public static void action_reverseNodeInGroup() {
+		LinkedList linkedList1 = new LinkedList();
+		linkedList1.add(7);
+		linkedList1.add(6);
+		linkedList1.add(5);
+		linkedList1.add(4);
+		linkedList1.add(3);
+		linkedList1.add(2);
+		linkedList1.add(1);
+
+		printLinkedList(linkedList1);
+		linkedList1.head = linkedList1.reverse(linkedList1.head, 2);
+		printLinkedList(linkedList1);
+	}
+
+	public static void action_containLoop() {
 		LinkedList linkedList1 = new LinkedList();
 		Node node7 = linkedList1.add(7);
 		linkedList1.add(5);
@@ -150,7 +170,6 @@ public class LinkedList {
 	}
 
 	public Node getNodeAtPosition(int pos) {
-
 		if (pos == 0)
 			return head;
 		if (pos >= size)
@@ -199,7 +218,6 @@ public class LinkedList {
 	}
 
 	public Node removeAt(int pos) {
-
 		Node removed = null;
 		if (pos == 0) {
 			head = head.next;
@@ -227,7 +245,6 @@ public class LinkedList {
 	}
 
 	public void swapNodes(int x, int y) {
-
 		// Nothing to do if x and y are same
 		if (x == y)
 			return;
@@ -443,8 +460,7 @@ public class LinkedList {
 	}
 
 	/**
-	 * How to detect a loop in a linked list?
-	 * 
+	 * How to detect a loop in a linked list? Floyd's Cycle-Finding Algorithm
 	 * {@link :
 	 * http://stackoverflow.com/questions/2663115/how-to-detect-a-loop-in
 	 * -a-linked-list}
@@ -470,6 +486,35 @@ public class LinkedList {
 				return false;
 			}
 		}
+	}
+
+	// Reverse a Linked List in groups of given size
+	public Node reverse(Node head, int k) {
+		Node current = head;
+		Node next = null;
+		Node prev = null;
+
+		int count = 0;
+
+		/* Reverse first k nodes of linked list */
+		while (count < k && current != null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+			count++;
+		}
+
+		/*
+		 * next is now a pointer to (k+1)th node Recursively call for the list
+		 * starting from current. And make rest of the list as next of first
+		 * node
+		 */
+		if (next != null)
+			head.next = reverse(next, k);
+
+		// prev is now head of input list
+		return prev;
 	}
 
 	public void meregeSort() {
