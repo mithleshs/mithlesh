@@ -34,7 +34,6 @@ public class LinkedList {
 
 	public static void main(String[] args) {
 
-		System.out.println("Here..");
 	}
 
 	public static void action_reverseNodeInGroup() {
