@@ -1,6 +1,5 @@
 package part_01_linkedList;
 
-import javax.sound.sampled.ReverbType;
 
 /**
  * @author Mithlesh Singh
@@ -25,7 +24,7 @@ import javax.sound.sampled.ReverbType;
 
 public class LinkedList {
 
-	Node head;
+	public Node head;
 	int size = 0;
 
 	public int size() {
