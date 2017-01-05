@@ -37,6 +37,7 @@ public class LinkedStack {
 	public static void main(String[] args) {
 
 		LinkedStack stack = new LinkedStack();
+		
 		stack.push(12);
 		stack.push(10);
 		stack.push(14);
