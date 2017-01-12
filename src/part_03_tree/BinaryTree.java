@@ -38,6 +38,8 @@ public class BinaryTree {
 		System.out.println("LEVEL-ORDER-AT-LEVEL");
 		tree.printLevelOrderAtLevel(tree.root);
 		System.out.println(" ");
+		
+		System.out.println("Size : "+tree.size(tree.root));
 	}
 
 	void preorder(TreeNode node) {
@@ -120,6 +122,12 @@ public class BinaryTree {
 			else
 				return (rheight + 1);
 		}
+	}
+	
+	public int size(TreeNode node){
+		if(node==null)
+			return 0;
+		else return(1+size(node.left)+size(node.right));
 	}
 
 }
