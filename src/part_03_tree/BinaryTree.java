@@ -22,24 +22,27 @@ public class BinaryTree {
 		System.out.println("PRE-ORDER");
 		tree.preorder(tree.root);
 		System.out.println("");
-		
+
 		System.out.println("IN-ORDER");
 		tree.inorder(tree.root);
 		System.out.println("");
-		
+
 		System.out.println("POST-ORDER");
 		tree.postorder(tree.root);
 		System.out.println("");
-		
+
 		System.out.println("LEVEL-ORDER");
 		tree.printLevelOrder(tree.root);
 		System.out.println(" ");
-		
+
 		System.out.println("LEVEL-ORDER-AT-LEVEL");
 		tree.printLevelOrderAtLevel(tree.root);
 		System.out.println(" ");
-		
-		System.out.println("Size : "+tree.size(tree.root));
+
+		System.out.println("Size : " + tree.size(tree.root));
+
+		int[] path = new int[40];
+		getAncestors(tree.root, 4, path, 0);
 	}
 
 	void preorder(TreeNode node) {
@@ -100,11 +103,10 @@ public class BinaryTree {
 		for (int i = 1; i <= height; i++)
 			levelOrder(node, i);
 	}
-	
+
 	void printLevelOrderAtLevel(TreeNode node) {
 		int height = height(node);
-		for (int i = 1; i <= height; i++)
-		{
+		for (int i = 1; i <= height; i++) {
 			levelOrder(node, i);
 			System.out.println("");
 		}
@@ -123,11 +125,37 @@ public class BinaryTree {
 				return (rheight + 1);
 		}
 	}
-	
-	public int size(TreeNode node){
-		if(node==null)
+
+	public int size(TreeNode node) {
+		if (node == null)
 			return 0;
-		else return(1+size(node.left)+size(node.right));
+		else
+			return (1 + size(node.left) + size(node.right));
+	}
+
+	public static void getAncestors(TreeNode root, int data, int[] path,
+			int pathLength) {
+
+		if (root != null) {
+			if (root.data == data) {
+				System.out.println("Ancestors are : ");
+
+				for (int i = 0; i < path.length; i++) {
+					if (path[i] != 0) {
+						System.out.print(path[i] + " ");
+					}
+				}
+				System.out.println("");
+			} else {
+				path[pathLength] = root.data;
+				pathLength++;
+			}
+		} else {
+			return;
+		}
+
+		getAncestors(root.left, data, path, pathLength);
+		getAncestors(root.right, data, path, pathLength);
 	}
 
 }
