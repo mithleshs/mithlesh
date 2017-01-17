@@ -9,6 +9,10 @@ package part_03_tree;
 public class BinaryTree {
 
 	TreeNode root;
+	int[] preOrder = new int[100];
+	int[] inOrder = new int[100];
+	int preOrderIn = 0;
+	int inOrderIn = 0;
 
 	public static void main(String[] args) {
 
@@ -54,6 +58,8 @@ public class BinaryTree {
 		if (node == null)
 			return;
 
+		preOrder[preOrderIn]=node.data;
+		preOrderIn++;
 		System.out.print(node.data + " ");
 		preorder(node.left);
 		preorder(node.right);
@@ -68,6 +74,8 @@ public class BinaryTree {
 		if (node == null)
 			return;
 		inorder(node.left);
+		inOrder[inOrderIn]=node.data;
+		inOrderIn++;
 		System.out.print(node.data + " ");
 		inorder(node.right);
 	}
