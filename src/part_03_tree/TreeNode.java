@@ -9,6 +9,9 @@ public class TreeNode {
 	//ignore below ref variable ...only used for ConnectNodes.java file
 	public TreeNode nextRight;
 
+	//ignore below ref variable ...only used for inorder successor for next node 
+	public TreeNode next;
+		
 	public TreeNode(int data) {
 		super();
 		this.data = data;
