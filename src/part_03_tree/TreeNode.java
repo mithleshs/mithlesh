@@ -5,6 +5,9 @@ public class TreeNode {
 	public TreeNode left;
 	public TreeNode right;
 	public int data;
+	
+	//ignore below ref variable ...only used for ConnectNodes.java file
+	public TreeNode nextRight;
 
 	public TreeNode(int data) {
 		super();
