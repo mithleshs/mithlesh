@@ -1,6 +1,5 @@
 package part_03_tree.searching;
 
-import part_03_tree.BinaryTree;
 import part_03_tree.TreeNode;
 
 public class BinarySearchTree {
