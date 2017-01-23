@@ -31,30 +31,10 @@ public class BinarySearchTree {
 			System.out.println("Not Found 404");
 		}
 
-		BinaryTree tree = new BinaryTree();
-		System.out.println("IN-ORDER");
-		tree.inorder(bst.root);
-		System.out.println("");
-
-		System.out.println("DELETE A NODE");
-
-		System.out.println("Inorder traversal of the given tree");
-        tree.inorder(bst.root);
- 
-        System.out.println("\nDelete 20");
-        bst.deleteKey(20);
-        System.out.println("Inorder traversal of the modified tree");
-        tree.inorder(bst.root);
-        
-        System.out.println("\nDelete 30");
-        bst.deleteKey(30);
-        System.out.println("Inorder traversal of the modified tree");
-        tree.inorder(bst.root);
-        
-        System.out.println("\nDelete 50");
-        bst.deleteKey(50);
-        System.out.println("Inorder traversal of the modified tree");
-        tree.inorder(bst.root);
+		TreeNode minNode=bst.getMin(bst.root);
+		TreeNode maxNode=bst.getMax(bst.root);
+		System.out.println("Min Node : "+minNode.data);
+		System.out.println("Max Node : "+maxNode.data);
 	}
 
 	public void insert(int data) {
@@ -130,6 +110,28 @@ public class BinarySearchTree {
 		}
 
 		return root;
+	}
+
+	public TreeNode getMin(TreeNode root) {
+
+		if (root == null)
+			return null;
+
+		if (root.left == null)
+			return root;
+		else
+			return getMin(root.left);
+	}
+	
+	public TreeNode getMax(TreeNode root) {
+
+		if (root == null)
+			return null;
+
+		if (root.right == null)
+			return root;
+		else
+			return getMax(root.right);
 	}
 
 }
