@@ -21,7 +21,7 @@ public class InorderSuccessor {
 		if (node == null)
 			return;
 		populateNext(node.right);
-		node.next = next;
+		
 		if(next!=null)
 			System.out.println(node.data+"--->"+next.data);
 		else
