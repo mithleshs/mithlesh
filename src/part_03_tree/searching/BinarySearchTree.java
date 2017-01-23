@@ -8,7 +8,10 @@ public class BinarySearchTree {
 
 	public static TreeNode prece = null;
 	public static TreeNode succ = null;
-	
+
+	// To keep tract of previous node in Inorder Traversal
+	TreeNode prev;
+
 	public BinarySearchTree() {
 		root = null;
 	}
@@ -37,13 +40,16 @@ public class BinarySearchTree {
 		TreeNode maxNode = bst.getMax(bst.root);
 		System.out.println("Min Node : " + minNode.data);
 		System.out.println("Max Node : " + maxNode.data);
-		
-		System.out.println("Find Inorder predecessor and successor for a given key ");
-		
-		int findFor=50;
+
+		System.out
+				.println("Find Inorder predecessor and successor for a given key ");
+
+		int findFor = 50;
 		bst.findPredSucc(bst.root, findFor);
-		System.out.println("Predecessor is : "+prece.data);
-		System.out.println("Successor   is : "+succ.data);
+		System.out.println("Predecessor is : " + prece.data);
+		System.out.println("Successor   is : " + succ.data);
+		
+		System.out.println("Is Binary Search Tree : "+bst.isBST(bst.root));
 	}
 
 	public void insert(int data) {
@@ -143,8 +149,7 @@ public class BinarySearchTree {
 			return getMax(root.right);
 	}
 
-	public void findPredSucc(TreeNode root, 
-			int data) {
+	public void findPredSucc(TreeNode root, int data) {
 
 		if (root == null)
 			return;
@@ -168,6 +173,22 @@ public class BinarySearchTree {
 			succ = root;
 			findPredSucc(root.left, data);
 		}
+	}
+
+	boolean isBST(TreeNode node) {
+		// traverse the tree in inorder fashion and
+		// keep a track of previous node
+		if (node != null) {
+			if (!isBST(node.left))
+				return false;
+
+			// allows only distinct values node
+			if (prev != null && node.data <= prev.data)
+				return false;
+			prev = node;
+			return isBST(node.right);
+		}
+		return true;
 	}
 
 }
