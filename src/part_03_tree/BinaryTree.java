@@ -65,7 +65,7 @@ public class BinaryTree {
 		preorder(node.right);
 	}
 
-	void inorder(TreeNode node) {
+	public void inorder(TreeNode node) {
 
 		// 1. Process Left
 		// 2. Visit
