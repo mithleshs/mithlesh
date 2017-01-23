@@ -6,6 +6,9 @@ public class BinarySearchTree {
 
 	public TreeNode root = null;
 
+	public static TreeNode prece = null;
+	public static TreeNode succ = null;
+	
 	public BinarySearchTree() {
 		root = null;
 	}
@@ -30,10 +33,17 @@ public class BinarySearchTree {
 			System.out.println("Not Found 404");
 		}
 
-		TreeNode minNode=bst.getMin(bst.root);
-		TreeNode maxNode=bst.getMax(bst.root);
-		System.out.println("Min Node : "+minNode.data);
-		System.out.println("Max Node : "+maxNode.data);
+		TreeNode minNode = bst.getMin(bst.root);
+		TreeNode maxNode = bst.getMax(bst.root);
+		System.out.println("Min Node : " + minNode.data);
+		System.out.println("Max Node : " + maxNode.data);
+		
+		System.out.println("Find Inorder predecessor and successor for a given key ");
+		
+		int findFor=50;
+		bst.findPredSucc(bst.root, findFor);
+		System.out.println("Predecessor is : "+prece.data);
+		System.out.println("Successor   is : "+succ.data);
 	}
 
 	public void insert(int data) {
@@ -121,7 +131,7 @@ public class BinarySearchTree {
 		else
 			return getMin(root.left);
 	}
-	
+
 	public TreeNode getMax(TreeNode root) {
 
 		if (root == null)
@@ -131,6 +141,33 @@ public class BinarySearchTree {
 			return root;
 		else
 			return getMax(root.right);
+	}
+
+	public void findPredSucc(TreeNode root, 
+			int data) {
+
+		if (root == null)
+			return;
+
+		if (root.data == data) {
+			if (root.left != null) {
+				prece = getMax(root.left);
+			}
+
+			if (root.right != null) {
+				succ = getMin(root.right);
+			}
+
+			return;
+		}
+
+		if (data > root.data) {
+			prece = root;
+			findPredSucc(root.right, data);
+		} else {
+			succ = root;
+			findPredSucc(root.left, data);
+		}
 	}
 
 }
