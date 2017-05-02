@@ -2,6 +2,10 @@ package part_00_array;
 
 public class UnsortedArray {
 
+	/*Time complexities:
+		Search: O(n)
+		Insert: O(1)
+		Delete: O(n)*/
 	public static void main(String[] args) {
 
 		int capacity = 20;
