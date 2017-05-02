@@ -48,9 +48,7 @@ public class SortedArray {
 	public static void insertElement(int temp[], int value,int length){
 		int i;
 		for(i=length-1;(value<temp[i]&&i>=0);i--){
-			if(value<=temp[i]){
-				temp[i+1]=temp[i];
-			}
+			temp[i+1]=temp[i];
 		}
 		temp[i+1]=value;
 		System.out.println();
