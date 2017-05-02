@@ -4,7 +4,7 @@ public class UnsortedArray {
 
 	public static void main(String[] args) {
 
-		int temp[] = new int[20];
+		int temp[] = new int[21];
 		temp[0] = 10;
 		temp[1] = 2;
 		temp[2] = 20;
