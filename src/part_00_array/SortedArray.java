@@ -17,6 +17,8 @@ public class SortedArray {
 
 		int searchedPos=binarySearch(temp, 20, 0, length-1);
 		System.out.println(searchedPos);
+		
+		insertElement(temp, 5, length);
 	}
 
 	public static int binarySearch(int temp[], int searchFor, int minPos,
@@ -41,5 +43,16 @@ public class SortedArray {
 		}
 
 		return binarySearch(temp, searchFor, minPos, maxPos);
+	}
+	
+	public static void insertElement(int temp[], int value,int length){
+		int i;
+		for(i=length-1;(value<temp[i]&&i>=0);i--){
+			if(value<=temp[i]){
+				temp[i+1]=temp[i];
+			}
+		}
+		temp[i+1]=value;
+		System.out.println();
 	}
 }
