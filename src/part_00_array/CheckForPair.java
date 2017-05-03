@@ -65,6 +65,32 @@ public class CheckForPair {
 		return 0;
 	}
 
+/*	METHOD 2 (Use Hash Map)
+	
+	This method works in O(n) time if range of numbers is known.
+	Let sum be the given sum and A[] be the array in which we need to find pair.
+
+	1) Initialize Binary Hash Map M[] = {0, 0, ...}
+	2) Do following for each element A[i] in A[]
+	   (a)	If M[x - A[i]] is set then print the pair (A[i], x - A[i])
+	   (b)	Set M[A[i]]*/
+	
+	static void checkForPairMethod2(int arr[], int sum) {
+		// Declares and initializes the whole array as false
+		boolean[] binmap = new boolean[10000];
+
+		for (int i = 0; i < arr.length; ++i) {
+			int temp = sum - arr[i];
+
+			// checking for condition
+			if (temp >= 0 && binmap[temp]) {
+				System.out.println("Pair with given sum " + sum + " is ("
+						+ arr[i] + ", " + temp + ")");
+			}
+			binmap[arr[i]] = true;
+		}
+	}
+
 	public static void swapNumbers(int i, int j, int temp[]) {
 		int tempC = temp[i];
 		temp[i] = temp[j];
