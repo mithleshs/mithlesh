@@ -2,6 +2,11 @@ package part_00_array;
 
 public class SortedArray {
 
+	/*Time complexities:
+	Search: O(log n)
+	Insert: O(n)
+	Delete: O(n)*/
+	
 	public static void main(String[] args) {
 		int capacity = 20;
 		int temp[] = new int[capacity];
@@ -51,6 +56,18 @@ public class SortedArray {
 			temp[i+1]=temp[i];
 		}
 		temp[i+1]=value;
+		System.out.println();
+	}
+	
+	public static void removeElement(int numbs[], int value, int length) {
+
+		int searchFor = binarySearch(numbs, value, 0, length-1);
+
+		if (searchFor >= 0) {
+			for (int i = searchFor; i < length; i++) {
+				numbs[i] = numbs[i + 1];
+			}
+		}
 		System.out.println();
 	}
 }
