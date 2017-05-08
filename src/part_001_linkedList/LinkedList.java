@@ -28,12 +28,13 @@ public class LinkedList {
 		list.printList();
 		list.deleteNode(list.head.next.next);
 		list.printList();
-		list.deleteNodeAt(2);
-		list.printList();
+		//list.deleteNodeAt(2);
+		//list.printList();
 		//list.size();
 		//System.out.println("Recursive size is : " + list.getSize(list.head));
 		//list.swapNodes(2, 1);
 		//list.printList();
+		System.out.println("Middle node is : "+list.middleNode().data);
 	}
 
 	public void printList() {
@@ -185,5 +186,19 @@ public class LinkedList {
 		currentX.next = currentY.next;
 		currentY.next = tempX;
 
+	}
+	
+	public Node middleNode(){
+		
+		if(head==null)
+			return head;
+		Node fastPtr=head;
+		Node slowPtr=head;
+		while(fastPtr!=null&&fastPtr.next!=null){
+			slowPtr=slowPtr.next;
+			fastPtr=fastPtr.next.next;
+		}
+		
+		return slowPtr;
 	}
 }
