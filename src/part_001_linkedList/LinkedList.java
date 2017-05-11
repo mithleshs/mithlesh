@@ -36,6 +36,9 @@ public class LinkedList {
 		//list.printList();
 		//System.out.println("Middle node is : "+list.middleNode().data);
 		//System.out.println("Nth Node from End is : "+list.findNodeFromEnd(4).data);
+		
+		//list.reverseUtil(list.head, null);
+		//list.printList();
 	}
 
 	public void printList() {
@@ -218,5 +221,36 @@ public class LinkedList {
 		}
 		
 		return secondPtr;
+	}
+	
+	public void reverse(){
+		Node current=head;
+		Node prev=null;
+		Node next=null;
+		
+		while(current!=null){
+			next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+		}
+		
+		head=prev;
+	}
+	
+	public Node reverseUtil(Node current,Node prev){
+		
+		if(current.next==null){
+			head=current;
+			head.next=prev;
+			
+			return head;
+		}
+		
+		Node next1=current.next;
+		current.next=prev;
+		reverseUtil(next1, current);
+		
+		return head;
 	}
 }
