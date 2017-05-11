@@ -34,7 +34,8 @@ public class LinkedList {
 		//System.out.println("Recursive size is : " + list.getSize(list.head));
 		//list.swapNodes(2, 1);
 		//list.printList();
-		System.out.println("Middle node is : "+list.middleNode().data);
+		//System.out.println("Middle node is : "+list.middleNode().data);
+		//System.out.println("Nth Node from End is : "+list.findNodeFromEnd(4).data);
 	}
 
 	public void printList() {
@@ -200,5 +201,22 @@ public class LinkedList {
 		}
 		
 		return slowPtr;
+	}
+	
+	public Node findNodeFromEnd(int pos){
+		Node firstPtr=head;
+		Node secondPtr=head;
+		int count=1;
+		
+		while(firstPtr!=null && secondPtr!=null){
+			if(count>pos){
+				secondPtr=secondPtr.next;
+			}
+			
+			firstPtr=firstPtr.next;
+			count++;
+		}
+		
+		return secondPtr;
 	}
 }
