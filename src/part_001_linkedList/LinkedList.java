@@ -39,6 +39,7 @@ public class LinkedList {
 		
 		//list.reverseUtil(list.head, null);
 		//list.printList();
+		mergeSortedList();
 	}
 
 	public void printList() {
@@ -252,5 +253,45 @@ public class LinkedList {
 		reverseUtil(next1, current);
 		
 		return head;
+	}
+	
+	public static Node merge(Node a,Node b){
+		Node newNode=null;
+		if(a==null)
+		{
+			return b;
+		}
+		else if(b==null){
+			return a;
+		}
+		else if(a.data>=b.data){
+			newNode=b;
+			newNode.next=merge(a,b.next);
+		}
+		else if(a.data<=b.data){
+			newNode=a;
+			newNode.next=merge(a.next,b);
+		}
+		return newNode;
+		
+	}
+	
+	public static void mergeSortedList(){
+		LinkedList list1=new LinkedList();
+		list1.head=new Node(5);
+		list1.head.next=new Node(10);
+		list1.head.next.next=new Node(15);
+		
+		LinkedList list2=new LinkedList();
+		list2.head=new Node(2);
+		list2.head.next=new Node(3);
+		list2.head.next.next=new Node(20);
+		
+		list1.printList();
+		list2.printList();
+		
+		list1.head=merge(list1.head, list2.head);
+		list1.printList();
+		
 	}
 }
