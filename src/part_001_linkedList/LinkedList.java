@@ -39,7 +39,8 @@ public class LinkedList {
 		
 		//list.reverseUtil(list.head, null);
 		//list.printList();
-		mergeSortedList();
+		//mergeSortedList();
+		removeDuplicateFromSortedList();
 	}
 
 	public void printList() {
@@ -292,6 +293,32 @@ public class LinkedList {
 		
 		list1.head=merge(list1.head, list2.head);
 		list1.printList();
+		
+	}
+	
+	public static void removeDuplicateFromSortedList(){
+		
+		LinkedList list=new LinkedList();
+		list.head=new Node(11);
+		list.head.next=new Node(11);
+		list.head.next.next=new Node(11);
+		list.head.next.next.next=new Node(12);
+		list.head.next.next.next.next=new Node(12);
+		list.head.next.next.next.next.next=new Node(14);
+		Node current=list.head;
+		Node next=null;
+		list.printList();
+		while(current!=null  ){
+			next=current.next;
+			if(next!=null && current.data==next.data){
+				current.next=next.next;
+			}
+			else
+				current=current.next;
+			
+		}
+		
+		list.printList();
 		
 	}
 }
