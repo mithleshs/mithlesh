@@ -41,7 +41,8 @@ public class LinkedList {
 		// list.printList();
 		// mergeSortedList();
 		// removeDuplicateFromSortedList();
-		pairWiseSwap();
+		//pairWiseSwap();
+		moveLastEleToFront();
 	}
 
 	public void printList() {
@@ -341,5 +342,27 @@ public class LinkedList {
 
 	}
 	
+	public static void moveLastEleToFront(){
+		LinkedList list = new LinkedList();
+		list.head = new Node(1);
+		list.head.next = new Node(2);
+		list.head.next.next = new Node(3);
+		list.head.next.next.next = new Node(4);
+		list.head.next.next.next.next = new Node(5);
+		list.head.next.next.next.next.next = new Node(6);
+		list.printList();
+		
+		Node current=list.head;
+		Node prev=null;
+		while(current!=null & current.next!=null){
+			prev=current;
+			current=current.next;
+		}
+		current.next=list.head;
+		list.head=current;
+		prev.next=null;
+		list.printList();
+		
+	}
 	
 }
