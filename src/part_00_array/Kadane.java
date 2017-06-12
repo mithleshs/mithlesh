@@ -26,25 +26,24 @@ public class Kadane {
 	public static int maxSubArraySum(int[] temp) {
 		int max_so_far = 0;
 		int max_ending_here = 0;
-		int startIn=0;
-		int endIn=0;
-		int s=0;
+		int startIn = 0;
+		int endIn = 0;
+
 		for (int i = 0; i < temp.length; i++) {
 
 			max_ending_here += temp[i];
 			if (max_ending_here > max_so_far) {
 				max_so_far = max_ending_here;
-				startIn=s;
-				endIn=i;
+				endIn = i;
 			}
 
 			if (max_ending_here < 0) {
 				max_ending_here = 0;
-				s=i+1;
+				startIn = i + 1;
 			}
 		}
-		
-		System.out.println("SUBARRAY is from "+startIn+" to "+endIn);
+
+		System.out.println("SUBARRAY is from " + startIn + " to " + endIn);
 		return max_so_far;
 	}
 
