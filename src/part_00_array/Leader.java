@@ -31,6 +31,7 @@ public class Leader {
 		}
 	}
 
+	/* Time Complexity: O(n) */
 	public static void findLeaders2(int[] temp) {
 		int maxFormRight = 0;
 		for (int i = temp.length - 1; i >= 0; i--) {
