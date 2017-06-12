@@ -30,16 +30,13 @@ public class Leader {
 			}
 		}
 	}
-	
+
 	public static void findLeaders2(int[] temp) {
-		
-		int maxFormRight=0;
-		for(int i=temp.length-1;i>=0;i--)
-		{
-			if(temp[i]>maxFormRight)
-			{
-				maxFormRight=temp[i];
-				System.out.println("Leader is :"+maxFormRight);
+		int maxFormRight = 0;
+		for (int i = temp.length - 1; i >= 0; i--) {
+			if (temp[i] > maxFormRight) {
+				maxFormRight = temp[i];
+				System.out.println("Leader is :" + maxFormRight);
 			}
 		}
 	}
