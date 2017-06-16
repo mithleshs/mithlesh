@@ -40,7 +40,7 @@ public class InfixToSuffix {
 				while (stack.peek() != '(') {
 					postfix = postfix + stack.pop();
 				}
-				stack.pop(); 
+				stack.pop(); // Because  parenthesis are not required in postfix
 			} else
 			{
 				while (!stack.isEmpty() && !(stack.peek() == '(')
