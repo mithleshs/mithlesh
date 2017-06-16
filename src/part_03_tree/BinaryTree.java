@@ -1,5 +1,7 @@
 package part_03_tree;
 
+import java.util.Queue;
+
 /**
  * @1. (Left to Right)Breadth First Traversal (Or Level Order Traversal) / Queue
  * @2. (Top to Bottom)Depth First Traversals / Stack Inorder Traversal
@@ -43,6 +45,10 @@ public class BinaryTree {
 		tree.printLevelOrderAtLevel(tree.root);
 		System.out.println(" ");
 
+		System.out.println("LEVEL-ORDER-AT-LEVEL with queue");
+		tree.levelOrderLineByLine(tree.root);
+		System.out.println(" ");
+
 		System.out.println("Size : " + tree.size(tree.root));
 
 		int[] path = new int[40];
@@ -58,7 +64,7 @@ public class BinaryTree {
 		if (node == null)
 			return;
 
-		preOrder[preOrderIn]=node.data;
+		preOrder[preOrderIn] = node.data;
 		preOrderIn++;
 		System.out.print(node.data + " ");
 		preorder(node.left);
@@ -74,7 +80,7 @@ public class BinaryTree {
 		if (node == null)
 			return;
 		inorder(node.left);
-		inOrder[inOrderIn]=node.data;
+		inOrder[inOrderIn] = node.data;
 		inOrderIn++;
 		System.out.print(node.data + " ");
 		inorder(node.right);
@@ -94,6 +100,7 @@ public class BinaryTree {
 	}
 
 	// BFS Traversal (Level order Traversal)
+	// Time : 0(n2)
 	void levelOrder(TreeNode node, int level) {
 		if (node == null) {
 			return;
@@ -103,6 +110,28 @@ public class BinaryTree {
 		} else if (level > 1) {
 			levelOrder(node.left, level - 1);
 			levelOrder(node.right, level - 1);
+		}
+	}
+
+	// Time : 0(n)
+	void levelOrderLineByLine(TreeNode root) {
+		Queue<TreeNode> queue = new java.util.LinkedList<TreeNode>();
+		queue.add(root);
+		while (!queue.isEmpty()) {
+			int levelSize = queue.size();
+			while (levelSize > 0) {
+				TreeNode node = queue.poll();
+				System.out.print(node.data);
+				System.out.print(" ");
+				if (node.left != null) {
+					queue.add(node.left);
+				}
+				if (node.right != null) {
+					queue.add(node.right);
+				}
+				levelSize--;
+			}
+			System.out.println("");
 		}
 	}
 
