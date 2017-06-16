@@ -18,7 +18,7 @@ public class StackWithTwoQueue {
 		System.out.println(stack);
 		int data = stack.pop();
 
-		System.out.println(stack);
+		System.out.println(data);
 	}
 
 	public void push(int data) {
