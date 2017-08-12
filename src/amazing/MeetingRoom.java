@@ -28,7 +28,7 @@ public class MeetingRoom {
 		personMap.put("C", Arrays.asList(2,7));
 		personMap.put("D", Arrays.asList(5,10));
 		
-		List<String> meetingRoom = new ArrayList<>();
+		List<String> meetingRoom = new ArrayList<String>();
 		Set<Entry<String, List<Integer>>> entrySet=personMap.entrySet();
 		int maxCount=0;
 		for(int i=1;i<25;i++)
