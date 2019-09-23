@@ -12,19 +12,24 @@ public class InsertionSort {
 
 	public static void main(String[] args) {
 
-		int[] input = { 4, 2, 9, 6, 23, 12, 34, 0, 1 };
+		int[] array = { 4, 2, 9, 6, 23, 12, 34, 0, 1 };
 
-		int size = input.length;
-		print(input);
+		int size = array.length;
+		print(array);
 
-		for (int k = 1; k < size; k++) {
-			for (int m = k; m > 0; m--) {
-				if (input[m] < input[m - 1]) {
-					swapNumbers(m, m - 1, input);
+		for (int i = 1; i < size; i++) {
+			int j = i - 1;
+			int minIndex = i;
+			while (j >= 0) {
+				if (array[minIndex] < array[j]) {
+					swap(array, minIndex, j);
+					minIndex = j;
 				}
+				j--;
 			}
 		}
-		print(input);
+		
+		print(array);
 
 	}
 
